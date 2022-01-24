@@ -13,7 +13,9 @@
     'website': 'camersoftware.com',
     'license': 'LGPL-3',
     # data files always loaded at installation
-    'data': [],
+    'data': [
+        'views/patient.xml'
+    ],
     # data files containing optionally loaded demonstration data
     'demo': [],
     'qweb': [],

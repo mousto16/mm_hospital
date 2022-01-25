@@ -14,6 +14,7 @@
     'license': 'LGPL-3',
     # data files always loaded at installation
     'data': [
+        'security/ir.model.access.csv',
         'views/patient.xml'
     ],
     # data files containing optionally loaded demonstration data

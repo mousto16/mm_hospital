@@ -40,6 +40,31 @@
         </field>
     </record>
 
+
+    <!-- create the search of the view    -->
+    <record id="patient_search" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Patients">
+                <field name="name"/>
+                <field name="note"/>
+
+                <!--   add filter by (grouper par)  -->
+                <separator/>
+                <filter string="Male" name="male" domain="[('gender', '=', 'male')]" />
+                <filter string="Female" name="female" domain="[('gender', '=', 'female')]" />
+                <filter string="Others" name="other" domain="[('gender', '=', 'other')]" />
+
+                <!--   add group by (grouper par)  -->
+                <group expand="1" string="Group By">
+                    <filter string="Gender" name="gender" context="{'group_by': 'gender'}"/>
+                    <filter string="Patient Name" name="patient_name" context="{'group_by': 'name'}"/>
+                </group>
+           </search>
+        </field>
+    </record>
+
     <!-- Action of left menu -->
     <record id="patient_action" model="ir.actions.act_window">
         <field name="name">Patients</field>

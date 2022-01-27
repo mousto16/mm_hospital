@@ -3,7 +3,7 @@
     'name': "Hospital Management",
     'summary': "Hospital Management Mousto",
     'version': '1.0',
-    'depends': ['base'],
+    'depends': ['sale'],
     'author': "Moustapha",
     'category': 'Productivity',
     'description': """
@@ -15,7 +15,8 @@
     # data files always loaded at installation
     'data': [
         'security/ir.model.access.csv',
-        'views/patient.xml'
+        'views/patient.xml',
+        'views/sale.xml'
     ],
     # data files containing optionally loaded demonstration data
     'demo': [],

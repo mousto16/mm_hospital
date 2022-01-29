@@ -19,6 +19,9 @@ class HospitalPatient(models.Model):
                               ('done', 'Done'), ('cancel', 'Cancelled')], default ='draft',
                              string='Status', tracking=True)
 
+    """add create dynamic field (many2one), define Many2one field"""
+    responsible_id = fields.Many2one('res.partner', string='Responsible')
+
     """define fonction to change the steps to the statusbar of header of view form"""
     def action_confirm(self):
         self.state = 'confirm'

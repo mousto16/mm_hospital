@@ -2,38 +2,38 @@
 <odoo>
 
      <!-- Patients Kanban View -->
-        <record id="view_patient_kanban" model="ir.ui.view">
-            <field name="name">hospital.patient.kanban</field>
-            <field name="model">hospital.patient</field>
-            <field name="arch" type="xml">
-                <kanban>
-                    <field name="id" />
-                    <field name="name"/>
-                    <field name="age"/>
-                    <field name="gender"/>
-                    <field name="note"/>
-                    <templates>
-                        <t t-name="kanban-box">
-                            <div class="oe_kanban_global_click">
-                                <div class="oe_kanban_details">
-                                    <ul>
-                                        <li>
-                                            Name: <field name="name"/>
-                                        </li>
-                                        <li>
-                                            Age: <field name="age"/>
-                                        </li>
-                                        <li>
-                                            Gender: <field name="gender"/>
-                                        </li>
-                                    </ul>
-                                </div>
+    <record id="view_patient_kanban" model="ir.ui.view">
+        <field name="name">hospital.patient.kanban</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id" />
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="note"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        Name: <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Age: <field name="age"/>
+                                    </li>
+                                    <li>
+                                        Gender: <field name="gender"/>
+                                    </li>
+                                </ul>
                             </div>
-                        </t>
-                    </templates>
-                </kanban>
-            </field>
-        </record>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
 
 
     <!-- list the details of patient (tree)   -->
@@ -46,6 +46,7 @@
                 <field name="age"/>
                 <field name="gender"/>
                 <field name="note"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -56,6 +57,13 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
+                <!-- Add the header of form view -->
+                <header>
+<!--                    <button name="action_assign_to_me" string="Assign to Me" type="object" class="oe_highlight" attrs="{'invisible' : [('user_id', '!=', False)]}"/>-->
+                    <field name="state" widget="statusbar"  options="{'clickable': '1'} "
+                    statusbar_visible="draft,done,confirm" />
+                </header>
+
                 <!-- Put the field of case (dans une case bien designer )  -->
                 <sheet>
                     <!--  Put the label before the field -->
@@ -71,6 +79,13 @@
                     </group>
 
                 </sheet>
+
+                <!--  add chat on view  -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -95,6 +110,7 @@
                 <group expand="1" string="Group By">
                     <filter string="Gender" name="gender" context="{'group_by': 'gender'}"/>
                     <filter string="Patient Name" name="patient_name" context="{'group_by': 'name'}"/>
+                    <filter string="Status" name="patient_status" context="{'group_by': 'state'}"/>
                 </group>
            </search>
         </field>

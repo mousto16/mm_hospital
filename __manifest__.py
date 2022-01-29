@@ -3,7 +3,10 @@
     'name': "Hospital Management",
     'summary': "Hospital Management Mousto",
     'version': '1.0',
-    'depends': ['sale'],
+    'depends': [
+        'sale',
+        'mail'
+    ],
     'author': "Moustapha",
     'category': 'Productivity',
     'description': """

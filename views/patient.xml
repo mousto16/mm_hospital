@@ -59,9 +59,16 @@
             <form>
                 <!-- Add the header of form view -->
                 <header>
-<!--                    <button name="action_assign_to_me" string="Assign to Me" type="object" class="oe_highlight" attrs="{'invisible' : [('user_id', '!=', False)]}"/>-->
-                    <field name="state" widget="statusbar"  options="{'clickable': '1'} "
-                    statusbar_visible="draft,done,confirm" />
+                    <!--  Crontrol statusBar  -->
+                    <button id="button_confirm" name="action_confirm"  string="Confirm" class="btn-primary"
+                            states = "draft" type="object"/>
+                    <button id="button_done" name="action_done"  string="Mark As Done" class="btn-primary"
+                            states = "confirm" type="object"/>
+                    <button id="button_draft" name="action_draft"  string="Set To Draft" class="btn-primary"
+                            states = "cancel" type="object"/>
+                    <button id="button_cancel" name="action_cancel"  string="Cancel" states = "draft, done, confirm"
+                            type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm" />
                 </header>
 
                 <!-- Put the field of case (dans une case bien designer )  -->

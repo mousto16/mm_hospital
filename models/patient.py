@@ -17,3 +17,16 @@ class HospitalPatient(models.Model):
     """add to header in form view"""
     state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'),
                               ('done', 'Done'), ('cancel', 'Cancelled')], default ='draft', string='Status')
+
+    """define fonction to change the steps to the statusbar of header of view form"""
+    def action_confirm(self):
+        self.state = 'confirm'
+
+    def action_done(self):
+        self.state = 'done'
+
+    def action_draft(self):
+        self.state = 'draft'
+
+    def action_cancel(self):
+        self.state = 'cancel'

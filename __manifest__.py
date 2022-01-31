@@ -18,6 +18,7 @@
     # data files always loaded at installation
     'data': [
         'security/ir.model.access.csv',
+        'data/data.xml',
         'views/patient.xml',
         'views/sale.xml'
     ],

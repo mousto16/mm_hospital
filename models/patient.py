@@ -34,3 +34,11 @@ class HospitalPatient(models.Model):
 
     def action_cancel(self):
         self.state = 'cancel'
+
+    """create id for Patient, if the field note isn't define, the 
+    programme add new message New Patient"""
+    @api.model
+    def create(self, vals):
+        if not vals.get("note"):
+            vals["note"] = 'New Patient'
+        return super(HospitalPatient, self).create(vals)

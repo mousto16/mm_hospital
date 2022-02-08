@@ -20,6 +20,7 @@
         'security/ir.model.access.csv',
         'data/data.xml',
         'views/patient.xml',
+        'views/kids_view.xml',
         'views/sale.xml'
     ],
     # data files containing optionally loaded demonstration data

@@ -22,6 +22,7 @@
         'views/patient.xml',
         'views/kids_view.xml',
         'views/patient_gender_view.xml',
+        'views/appointment.xml',
         'views/sale.xml'
     ],
     # data files containing optionally loaded demonstration data

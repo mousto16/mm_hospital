@@ -10,19 +10,28 @@ class HospitalAppointment(models.Model):
     name = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                        default=lambda self: _('New'))
 
-    note = fields.Text(string='Description')
-    date_appointment = fields.Date(string='Date')
-    date_checkup = fields.Datetime(string='Check Up Time')
-    """add to header in form view"""
-    state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'),
-                              ('done', 'Done'), ('cancel', 'Cancelled')], default ='draft',
-                             string='Status', tracking=True)
-
     """add create dynamic field (many2one), define Many2one field"""
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
 
-    """related field (faire apparaitre l'age de chaque patient quant on le selectionne dans appointment) """
+    """related field init (faire apparaitre l'age de chaque patient quant on le selectionne dans appointment) """
     age = fields.Integer(string='Age', related='patient_id.age', tracking=True)
+
+    """related field (faire apparaitre le esxe de chaque patient quant on le selectionne dans appointment avec onchange) """
+    gender = fields.Selection([
+        ('male', 'Male'),
+        ('female', 'Female'),
+        ('other', 'Other'),
+    ], string="Gender")
+
+    """add to header in form view"""
+    state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'),
+                              ('done', 'Done'), ('cancel', 'Cancelled')], default='draft',
+                             string='Status', tracking=True)
+
+    note = fields.Text(string='Description')
+    date_appointment = fields.Date(string='Date')
+    date_checkup = fields.Datetime(string='Check Up Time')
+
 
     """define fonction to change the steps to the statusbar of header of view form"""
     def action_confirm(self):
@@ -47,3 +56,15 @@ class HospitalAppointment(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment') or _('New')
         res = super(HospitalAppointment, self).create(vals)
         return res
+
+    """For field of string"""
+    @api.onchange('patient_id')
+    def onchange_patient_id(self):
+        if self.patient_id:
+            if self.patient_id.gender:
+                self.gender = self.patient_id.gender
+            if self.patient_id.note:
+                self.note = self.patient_id.note
+        else:
+            self.gender = ''
+            self.note = ''

@@ -9,6 +9,7 @@ class HospitalAppointment(models.Model):
 
     name = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                        default=lambda self: _('New'))
+
     note = fields.Text(string='Description')
     date_appointment = fields.Date(string='Date')
     date_checkup = fields.Datetime(string='Check Up Time')
@@ -19,6 +20,9 @@ class HospitalAppointment(models.Model):
 
     """add create dynamic field (many2one), define Many2one field"""
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
+
+    """related field (faire apparaitre l'age de chaque patient quant on le selectionne dans appointment) """
+    age = fields.Integer(string='Age', related='patient_id.age', tracking=True)
 
     """define fonction to change the steps to the statusbar of header of view form"""
     def action_confirm(self):

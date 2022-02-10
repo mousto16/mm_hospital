@@ -25,6 +25,18 @@ class HospitalPatient(models.Model):
     """add create dynamic field (many2one), define Many2one field"""
     responsible_id = fields.Many2one('res.partner', string='Responsible')
 
+    """Count the number of appointment by patient"""
+    appointment_count = fields.Integer(string='Apppointment Count', compute = '_compute_appointment_count')
+
+    """Methode to count the number of appointment by patient"""
+    def _compute_appointment_count(self):
+        """correspond a : select count(*) from hospital.appointment where patient_id = self.id
+            patient_id : reference au patient de appointment
+            hospital.appointment: nom de la table de la base de donnee
+            id = id du patient dans la table patient
+        """
+        appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=',self.id)])
+        self.appointment_count = appointment_count
     """define fonction to change the steps to the statusbar of header of view form"""
     def action_confirm(self):
         self.state = 'confirm'

@@ -19,10 +19,11 @@
     'data': [
         'security/ir.model.access.csv',
         'data/data.xml',
+        'wizard/create_appointment_view.xml',
         'views/patient.xml',
         'views/kids_view.xml',
         'views/patient_gender_view.xml',
-        'views/appointment.xml',
+        'views/appointment_view.xml',
         'views/sale.xml'
     ],
     # data files containing optionally loaded demonstration data

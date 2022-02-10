@@ -35,16 +35,20 @@ class HospitalAppointment(models.Model):
 
     """define fonction to change the steps to the statusbar of header of view form"""
     def action_confirm(self):
-        self.state = 'confirm'
+        for rec in self:
+            rec.state = 'confirm'
 
     def action_done(self):
-        self.state = 'done'
+        for rec in self:
+            rec.state = 'done'
 
     def action_draft(self):
-        self.state = 'draft'
+        for rec in self:
+            rec.state = 'draft'
 
     def action_cancel(self):
-        self.state = 'cancel'
+        for rec in self:
+            rec.state = 'cancel'
 
     """create id for Patient, if the field note isn't define, the 
     programme add new message New Appointment"""

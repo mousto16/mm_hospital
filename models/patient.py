@@ -29,26 +29,34 @@ class HospitalPatient(models.Model):
     appointment_count = fields.Integer(string='Apppointment Count', compute = '_compute_appointment_count')
 
     """Methode to count the number of appointment by patient"""
+    """correspond a : select count(*) from hospital.appointment where patient_id = self.id
+                patient_id : reference au patient de appointment
+                hospital.appointment: nom de la table de la base de donnee
+                id = id du patient dans la table patient
+            """
     def _compute_appointment_count(self):
-        """correspond a : select count(*) from hospital.appointment where patient_id = self.id
-            patient_id : reference au patient de appointment
-            hospital.appointment: nom de la table de la base de donnee
-            id = id du patient dans la table patient
-        """
-        appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=',self.id)])
-        self.appointment_count = appointment_count
+        """singleton Error : using loop for"""
+
+        for rec in self:
+            appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=',rec.id)])
+            rec.appointment_count = appointment_count
+
     """define fonction to change the steps to the statusbar of header of view form"""
     def action_confirm(self):
-        self.state = 'confirm'
+        for rec in self:
+            rec.state = 'confirm'
 
     def action_done(self):
-        self.state = 'done'
+        for rec in self:
+            rec.state = 'done'
 
     def action_draft(self):
-        self.state = 'draft'
+        for rec in self:
+            rec.state = 'draft'
 
     def action_cancel(self):
-        self.state = 'cancel'
+        for rec in self:
+            rec.state = 'cancel'
 
     """create id for Patient, if the field note isn't define, the 
     programme add new message New Patient"""

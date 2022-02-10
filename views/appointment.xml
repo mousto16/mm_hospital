@@ -83,7 +83,8 @@
                     <group>
                         <group>
                             <field name="patient_id"/>
-                            <field name="gender"/>
+                            <!-- Faire dipparaitre le input (readonly="1") et savegarder la valeur (force_save ="1")    -->
+                            <field name="gender" readonly="1" force_save ="1"/>
                             <field name="age"/>
                         </group>
                         <group>

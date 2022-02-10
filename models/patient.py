@@ -68,3 +68,12 @@ class HospitalPatient(models.Model):
             vals['reference'] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
         res = super(HospitalPatient, self).create(vals)
         return res
+
+    """function define the default value (New, description, gender:male, age...)"""
+    @api.model
+    def default_get(self, fields):
+        res = super(HospitalPatient, self).default_get(fields)
+        res['gender'] = 'female'
+        res['age'] = 18
+        return res
+

@@ -27,6 +27,7 @@ class HospitalPatient(models.Model):
 
     """Count the number of appointment by patient"""
     appointment_count = fields.Integer(string='Apppointment Count', compute = '_compute_appointment_count')
+    image = fields.Binary(string='Patient Image')
 
     """Methode to count the number of appointment by patient"""
     """correspond a : select count(*) from hospital.appointment where patient_id = self.id

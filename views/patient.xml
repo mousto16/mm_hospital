@@ -6,7 +6,7 @@
         <field name="name">hospital.patient.kanban</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban sample="1">
                 <field name="id" />
                 <field name="name"/>
                 <field name="age"/>
@@ -41,7 +41,7 @@
         <field name="name">hospital.patient.tree</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree sample="1">
                 <field name="name"/>
                 <field name="responsible_id"/>
                 <field name="age"/>

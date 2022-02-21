@@ -103,9 +103,22 @@
                             <field name="doctor_id"/>
                             <field name="date_appointment"/>
                             <field name="date_checkup"/>
-                            <field name="note"/>
                         </group>
                     </group>
+
+                    <notebook>
+                        <page string="Doctor Prescription" name="doctor_prescription">
+                            <group>
+                                <field name="prescription"/>
+                            </group>
+                        </page>
+                        <page string="Medecine" name="medecine">
+
+                        </page>
+                        <page string="Other Info" name="other_info">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
 
                 </sheet>
 

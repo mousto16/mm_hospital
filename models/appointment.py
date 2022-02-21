@@ -34,6 +34,7 @@ class HospitalAppointment(models.Model):
     note = fields.Text(string='Description')
     date_appointment = fields.Date(string='Date')
     date_checkup = fields.Datetime(string='Check Up Time')
+    prescription = fields.Text(String="Prescription") #dans le notebook
 
 
     """define fonction to change the steps to the statusbar of header of view form"""

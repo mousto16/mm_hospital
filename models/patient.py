@@ -30,6 +30,9 @@ class HospitalPatient(models.Model):
     appointment_count = fields.Integer(string='Apppointment Count', compute = '_compute_appointment_count')
     image = fields.Binary(string='Patient Image')
 
+    appointment_ids = fields.One2many('hospital.appointment', 'patient_id',
+                                            string='Appointments')
+
     """Methode to count the number of appointment by patient"""
     """correspond a : select count(*) from hospital.appointment where patient_id = self.id
                 patient_id : reference au patient de appointment

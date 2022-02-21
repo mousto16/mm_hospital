@@ -103,6 +103,23 @@
                         </group>
                     </group>
 
+                     <notebook>
+                        <page string="Appointments" name="appointment">
+                            <field name="appointment_ids" readonly="1">
+                                <tree create="0" delete="0" edit="0">
+                                    <field name="name" optional="show"/>
+                                    <field name="patient_id" optional="show"/>
+                                    <field name="state" optional="hide"/>
+                                    <field name="date_appointment" optional="show"/>
+                                    <field name="date_checkup" optional="show"/>
+                                    <field name="doctor_id" optional="show"/>
+                                    <field name="note" optional="hide"/>
+                                    <field name="age" optional="hide" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
                 </sheet>
 
                 <!--  add chat on view  -->

@@ -35,6 +35,9 @@ class HospitalAppointment(models.Model):
     date_appointment = fields.Date(string='Date')
     date_checkup = fields.Datetime(string='Check Up Time')
     prescription = fields.Text(String="Prescription") #dans le notebook
+    #One2many pour ajouter plusieurs champs
+    prescription_line_ids = fields.One2many('appointment.prescription.lines','appointment_id',
+                                            string='Prescription Lines')
 
 
     """define fonction to change the steps to the statusbar of header of view form"""

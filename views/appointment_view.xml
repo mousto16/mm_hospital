@@ -48,9 +48,13 @@
                     <button name="action_done"  string="Mark As Done" class="btn-primary" type="object"/>
                     <button name="action_draft"  string="Set To Draft" class="btn-primary" type="object"/>
                 </header>
-                <field name="name"/>
-                <field name="patient_id"/>
-                <field name="state"/>
+                <field name="name" optional="show"/>
+                <field name="patient_id" optional="show"/>
+                <field name="state" optional="hide"/>
+                <field name="date_appointment" optional="show"/>
+                <field name="date_checkup" optional="show"/>
+                <field name="note" optional="hide"/>
+                <field name="age" optional="hide" />
             </tree>
         </field>
     </record>

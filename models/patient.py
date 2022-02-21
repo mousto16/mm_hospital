@@ -5,6 +5,7 @@ class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _description = "Hospital Patient "
     _inherit = ["mail.thread", 'mail.activity.mixin']
+    _order = "id desc" #classement par ordre decroissant
 
     name = fields.Char(string='Name', required=True, tracking=True)
     """id reference of patient"""

@@ -6,6 +6,7 @@ class HospitalAppointment(models.Model):
     _name = "hospital.appointment"
     _description = "Hospital Appointment "
     _inherit = ["mail.thread", 'mail.activity.mixin']
+    _order = "name desc" #classement par ordre decroissant
 
     name = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                        default=lambda self: _('New'))

@@ -12,6 +12,8 @@ class HospitalAppointment(models.Model):
 
     """add create dynamic field (many2one), define Many2one field"""
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor', required=True)
+
 
     """related field init (faire apparaitre l'age de chaque patient quant on le selectionne dans appointment) """
     age = fields.Integer(string='Age', related='patient_id.age', tracking=True)

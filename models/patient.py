@@ -98,3 +98,11 @@ class HospitalPatient(models.Model):
         for rec in self:
             if rec.age ==0:
                 raise ValidationError(_("Age Cannot Be Zero..."))
+
+    """Combiner la plusieurs champs lors de la selection dans le Many2one (reference et name patient)"""
+    def name_get(self):
+        result = []
+        for rec in self:
+            name = '[' + rec.reference + ']' + ' ' + rec.name
+            result.append((rec.id, name))
+        return result

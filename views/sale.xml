@@ -11,4 +11,11 @@
             </xpath>
         </field>
     </record>
+
+    <menuitem id="menu_sale_appointment"
+              name="Appointments"
+              parent="sale.sale_order_menu"
+              action="action_hospital_appointment"
+              sequence="2"/>
+
 </odoo>

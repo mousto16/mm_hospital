@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
+
 
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
@@ -82,3 +84,17 @@ class HospitalPatient(models.Model):
         res['age'] = 18
         return res
 
+    """Pour gerer les contrainte dans la base de donnee: si un patient est deja cree, on ne devrait plus creer ce meme patient"""
+    @api.constrains('name')
+    def check_name(self):
+        for rec in self:
+            patients = self.env['hospital.patient'].search([('name','=', rec.name), ('id','!=', rec.id)])
+            if patients:
+                raise ValidationError(_("Name %s Already Exists" % rec.name))
+
+    """ Si l'age vaut 0, l'enregistrement au niveau de la base de donnee"""
+    @api.constrains('age')
+    def check_age(self):
+        for rec in self:
+            if rec.age ==0:
+                raise ValidationError(_("Age Cannot Be Zero..."))

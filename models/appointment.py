@@ -1,6 +1,8 @@
 # -*- coding : utf-8 -*-
 
 from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
+
 
 class HospitalAppointment(models.Model):
     _name = "hospital.appointment"
@@ -79,3 +81,9 @@ class HospitalAppointment(models.Model):
         else:
             self.gender = ''
             self.note = ''
+
+    # pour empecher la suppression de l'appointment
+    def unlink(self):
+        if self.state == 'done':
+            raise ValidationError(_("You cannot delete %s as it is in Done State" % self.name))
+        return super(HospitalAppointment, self).unlink()

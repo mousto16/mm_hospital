@@ -87,6 +87,8 @@
                             states = "cancel" type="object"/>
                     <button id="button_cancel" name="action_cancel"  string="Cancel" states = "draft,done,confirm"
                             confirm="Are you sure that you need to cancel?" type="object"/>
+                    <button name="action_url"  string="Open URL" class="btn-primary"
+                            type="object"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm" />
                 </header>
 

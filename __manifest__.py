@@ -5,7 +5,10 @@
     'version': '1.0',
     'depends': [
         'sale',
-        'mail'
+        'mail',
+        'website_slides',
+        'hr',
+        'report_xlsx'
     ],
     'author': "Moustapha",
     'category': 'Productivity',

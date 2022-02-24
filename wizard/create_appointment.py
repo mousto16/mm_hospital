@@ -9,6 +9,13 @@ class CreateAppointmentWizard(models.TransientModel):
     date_appointment = fields.Date(string='Date', required=False)
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
 
+    """function define the default"""
+    @api.model
+    def default_get(self, fields):
+        res = super(CreateAppointmentWizard, self).default_get(fields)
+        if self.context_get('active_id'):
+            res['patient_id'] = self.context_get('active_id')
+        return res
 
     """create record"""
     def action_create_appointment(self):

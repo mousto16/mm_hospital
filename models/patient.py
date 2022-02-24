@@ -115,6 +115,7 @@ class HospitalPatient(models.Model):
             'res_model': 'hospital.appointment',
             # 'view_type': 'tree,form',
             'domain': [('patient_id', '=', self.id)],
+            'context': {'default_patient_id': self.id},
             'view_mode': 'tree,kanban,form',
             # 'views': [(False, "form")],
             'target': 'current'

@@ -96,6 +96,18 @@
 
                 <!-- Put the field of case (dans une case bien designer )  -->
                 <sheet>
+
+                    <!--les boutons au-dessus des informations dans un formulaire-->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_appointments" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <div class="o_stat_info">
+                                <field name="appointment_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Appointments</span>
+                            </div>
+                        </button>
+                    </div>
+
+
                     <field name="image" widget="image" class="oe_avatar" />
                     <!--add the title name "New" at the create new patient-->
                     <div class="oe_title">

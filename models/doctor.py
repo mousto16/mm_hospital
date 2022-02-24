@@ -19,6 +19,14 @@ class HospitalDoctor(models.Model):
 
     image = fields.Binary(string='Doctor Image')
 
+    appointment_count = fields.Integer(string='Apppointment Count', compute = '_compute_appointment_count')
+
+    def _compute_appointment_count(self):
+        """singleton Error : using loop for"""
+        for rec in self:
+            appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=',rec.id)])
+            rec.appointment_count = appointment_count
+
     # pour gerer la copie lors de la duplication
     def copy(self, default=None):
         if default is None:

@@ -106,3 +106,16 @@ class HospitalPatient(models.Model):
             name = '[' + rec.reference + ']' + ' ' + rec.name
             result.append((rec.id, name))
         return result
+
+    """Pour gerer les boutons au dessus des informations dans une affichage du patient"""
+    def action_open_appointments(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Appointments',
+            'res_model': 'hospital.appointment',
+            # 'view_type': 'tree,form',
+            'domain': [('patient_id', '=', self.id)],
+            'view_mode': 'tree,kanban,form',
+            # 'views': [(False, "form")],
+            'target': 'current'
+        }

@@ -74,6 +74,8 @@
                 <!-- Put the field of case (dans une case bien designer )  -->
                 <sheet>
 
+                    <!--ruban de l'archivage-->
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
                     <!--les boutons au-dessus des informations dans un formulaire-->
                     <div class="oe_button_box" name="button_box">
                         <button name="%(mm_hospital.action_open_appointments)d" type="action" class="oe_stat_button" icon="fa-calendar">

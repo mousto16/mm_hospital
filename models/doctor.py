@@ -19,6 +19,9 @@ class HospitalDoctor(models.Model):
 
     image = fields.Binary(string='Doctor Image')
 
+    # le champ active pour l'archivage
+    active = fields.Boolean(string="Active", default=True)
+
     appointment_count = fields.Integer(string='Apppointment Count', compute = '_compute_appointment_count')
 
     def _compute_appointment_count(self):

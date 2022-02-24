@@ -59,7 +59,8 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <!--la modification multiple sur plusieurs champs-->
-            <tree sample="1" multi_edit="1">
+            <!--detachement du filtre avec expand-->
+            <tree sample="1" multi_edit="1" expand="1">
                 <field name="reference"/>
                 <field name="name"/>
                 <field name="responsible_id"/>

@@ -30,6 +30,7 @@
         'views/doctor_view.xml',
         'views/appointment_view.xml',
         'views/sale.xml',
+        'views/partner.xml',
         'report/report.xml',
         'report/patient_card.xml',
         'report/patient_details_template.xml'

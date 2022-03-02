@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-<!--    <record id="action_create_appointments" model="ir.actions.server">-->
-<!--        <field name="name">Create Appointments</field>-->
-<!--        <field name="type">ir.actions.server</field>-->
-<!--        <field name="model_id" ref="mm_hospital.model_hospital_patient" />-->
-<!--        <field name="binding_model_id" ref="mm_hospital.model_hospital_patient" />-->
-<!--        <field name="binding_view_types">form</field>-->
-<!--        <field name="state">code</field>-->
-<!--        <field name="code">-->
-<!--            if record:-->
-<!--                action_values = env.ref('mm_hospital.action_create_appointment').sudo().read()[0]-->
-<!--                action_values.update({'context': env.context})-->
-<!--                action = action_values-->
-<!--        </field>-->
-<!--    </record>-->
+    <record id="action_create_appointments" model="ir.actions.server">
+        <field name="name">Create Appointments</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="mm_hospital.model_hospital_patient" />
+        <field name="binding_model_id" ref="mm_hospital.model_hospital_patient" />
+        <field name="binding_view_types">tree,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            if record:
+                action_values = env.ref('mm_hospital.action_create_appointment').sudo().read()[0]
+                action_values.update({'context': env.context})
+                action = action_values
+        </field>
+    </record>
 
      <!-- Patients Kanban View -->
     <record id="view_patient_kanban" model="ir.ui.view">
@@ -34,7 +34,8 @@
                                 <ul>
                                     <li>
                                         ID: <field name="reference"/>
-                                    </li><li>
+                                    </li>
+                                    <li>
                                         Name: <field name="name"/>
                                     </li>
                                     <li>
@@ -64,6 +65,7 @@
                 <field name="reference"/>
                 <field name="name"/>
                 <field name="responsible_id"/>
+                <field name="doctor_id"/>
                 <field name="age"/>
                 <field name="gender"/>
                 <field name="note"/>
@@ -127,6 +129,7 @@
                         </group>
                         <group>
                             <field name="gender" invisible ="context.get('hide_gender')"/>
+                            <field name="doctor_id"/>
                             <field name="note"/>
                         </group>
                     </group>
@@ -193,7 +196,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.patient</field>
         <field name="view_mode">tree,kanban,form</field>
-        <field name="context">{'search_default_gender':1, 'search_default_male':1}</field>
+        <field name="context">{'search_default_gender':1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first patient!

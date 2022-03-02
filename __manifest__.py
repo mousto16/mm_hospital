@@ -31,6 +31,8 @@
         'views/appointment_view.xml',
         'views/sale.xml',
         'views/partner.xml',
+        'views/website_form.xml',
+        'views/template.xml',
         'report/report.xml',
         'report/patient_card.xml',
         'report/patient_details_template.xml'

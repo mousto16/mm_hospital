@@ -27,6 +27,7 @@ class HospitalPatient(models.Model):
 
     """add create dynamic field (many2one), define Many2one field"""
     responsible_id = fields.Many2one('res.partner', string='Responsible')
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor', required=True)
 
     """Count the number of appointment by patient"""
     appointment_count = fields.Integer(string='Apppointment Count', compute = '_compute_appointment_count')
